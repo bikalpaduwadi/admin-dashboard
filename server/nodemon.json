@@ -1,0 +1,10 @@
+{
+  "watch": [
+    "src/**/*",
+    ".env",
+    ".yaml"
+  ],
+  "ext": "ts,js,sql,.env,.yaml",
+  "verbose": false,
+  "exec": "npm run build && node dist/index.js"
+}
