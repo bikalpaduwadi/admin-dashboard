@@ -1,12 +1,10 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import { Box, FormControl, MenuItem, InputLabel, Select } from '@mui/material';
 
 import PageHeader from '../components/PageHeader';
 import OverviewChart from '../components/OverviewChart';
 
-interface OverviewProps {}
-
-const Overview: FC<OverviewProps> = ({}) => {
+const Overview = () => {
   const [view, setView] = useState<string>('units');
 
   return (

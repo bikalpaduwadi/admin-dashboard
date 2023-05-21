@@ -117,6 +117,7 @@ const OverviewChart: FC<OverviewChartProps> = ({
       }}
       yFormat=' >-.2f'
       curve='catmullRom'
+      enableArea={isDashboard}
       axisTop={null}
       axisRight={null}
       axisBottom={{
@@ -136,6 +137,7 @@ const OverviewChart: FC<OverviewChartProps> = ({
       }}
       axisLeft={{
         tickSize: 5,
+        tickValues: 5,
         tickPadding: 5,
         tickRotation: 0,
         legend: isDashboard

@@ -1,14 +1,23 @@
+import { useSelector } from 'react-redux';
 import { Box, useTheme } from '@mui/material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
-import User from '../models/entity/User';
+import { RootState } from '../state/store';
 import PageHeader from '../components/PageHeader';
-import { useGetCustomersQuery } from '../state/apis/users';
+import { useGetUserPerformanceQuery } from '../state/apis/users';
 
-const Customers = () => {
+const Performance = () => {
   const theme = useTheme();
-  const { data, isLoading } = useGetCustomersQuery();
+  const userId = useSelector((state: RootState) => state.session.userId);
+  const { data, isLoading } = useGetUserPerformanceQuery(userId);
 
+  console.log(data);
+
+  if (!data || isLoading) {
+    return <>Loading...</>;
+  }
+
+  console.log(data);
   const columns = [
     {
       field: '_id',
@@ -16,43 +25,37 @@ const Customers = () => {
       flex: 1,
     },
     {
-      field: 'name',
-      headerName: 'Name',
-      flex: 0.5,
-    },
-    {
-      field: 'email',
-      headerName: 'Email',
+      field: 'userId',
+      headerName: 'User ID',
       flex: 1,
     },
     {
-      field: 'phoneNumber',
-      headerName: 'Phone Number',
-      flex: 0.7,
-      renderCell: (params) => {
-        return params.value.replace(/^(\d{3})(\d{3})(\d{4})/, '($1)$2-$3');
-      },
-    },
-    {
-      field: 'country',
-      headerName: 'Country',
-      flex: 0.4,
-    },
-    {
-      field: 'occupation',
-      headerName: 'Occupation',
+      field: 'createdAt',
+      headerName: 'CreatedAt',
       flex: 1,
     },
+
     {
-      field: 'role',
-      headerName: 'Role',
+      field: 'products',
+      headerName: '# of Products',
       flex: 0.5,
+      sortable: false,
+      renderCell: (params) => params.value.length,
     },
-  ] as GridColDef<User>[];
+    {
+      field: 'cost',
+      headerName: 'Cost',
+      flex: 1,
+      renderCell: (params) => `$${Number(params.value).toFixed(2)}`,
+    },
+  ] as GridColDef<any>[];
 
   return (
     <Box m='1.5rem 2.5rem'>
-      <PageHeader title='CUSTOMERS' subTitle='List of Customers' />
+      <PageHeader
+        title='PERFORMANCE'
+        subTitle='Track your affiliate sales performance'
+      />
       <Box
         mt='25px'
         height='72vh'
@@ -84,7 +87,7 @@ const Customers = () => {
         <DataGrid
           loading={isLoading}
           getRowId={(row) => row._id}
-          rows={data || []}
+          rows={(data && data.sales) || []}
           columns={columns}
         ></DataGrid>
       </Box>
@@ -92,4 +95,4 @@ const Customers = () => {
   );
 };
 
-export default Customers;
+export default Performance;

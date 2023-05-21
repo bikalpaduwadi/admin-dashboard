@@ -3,12 +3,17 @@ import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
 import User from '../models/entity/User';
 import PageHeader from '../components/PageHeader';
-import { useGetCustomersQuery } from '../state/apis/users';
+import { useGetAdminsQuery } from '../state/apis/users';
 
-const Customers = () => {
+const Admin = () => {
   const theme = useTheme();
-  const { data, isLoading } = useGetCustomersQuery();
+  const { data, isLoading } = useGetAdminsQuery();
 
+  if (!data || isLoading) {
+    return <>Loading...</>;
+  }
+
+  console.log(data);
   const columns = [
     {
       field: '_id',
@@ -52,7 +57,7 @@ const Customers = () => {
 
   return (
     <Box m='1.5rem 2.5rem'>
-      <PageHeader title='CUSTOMERS' subTitle='List of Customers' />
+      <PageHeader title='ADMINS' subTitle='List of Admins' />
       <Box
         mt='25px'
         height='72vh'
@@ -92,4 +97,4 @@ const Customers = () => {
   );
 };
 
-export default Customers;
+export default Admin;

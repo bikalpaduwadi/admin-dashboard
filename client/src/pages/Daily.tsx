@@ -1,5 +1,5 @@
+import { useMemo, useState } from 'react';
 import { ResponsiveLine } from '@nivo/line';
-import { FC, useMemo, useState } from 'react';
 import { Box, useTheme } from '@mui/material';
 import ReactDatePicker from 'react-datepicker';
 
@@ -14,9 +14,7 @@ interface Line {
   data: { x: string; y: number }[];
 }
 
-interface DailyProps {}
-
-const Daily: FC<DailyProps> = ({}) => {
+const Daily = () => {
   const [startDate, setStartDate] = useState<Date>(new Date('2021-01-01'));
   const [endDate, setEndDate] = useState<Date>(new Date('2021-02-01'));
 

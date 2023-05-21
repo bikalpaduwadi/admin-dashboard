@@ -1,13 +1,10 @@
-import { FC } from 'react';
 import { Box, useMediaQuery } from '@mui/material';
 
-import { useGetProductsQuery } from '../state/apis/products';
-import PageHeader from '../components/PageHeader';
 import Product from '../components/product';
+import PageHeader from '../components/PageHeader';
+import { useGetProductsQuery } from '../state/apis/products';
 
-interface ProductsProps {}
-
-const Products: FC<ProductsProps> = ({}) => {
+const Products = () => {
   const { data, isLoading } = useGetProductsQuery();
   const isNonMobile = useMediaQuery('(min-width: 1000px)');
 

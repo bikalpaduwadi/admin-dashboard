@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import SalesStat from '../../models/entity/SalesStat';
 
 export const salesStatsApi = createApi({
-  tagTypes: ['SalesStats'],
+  tagTypes: ['SalesStats', 'Dashboard'],
   reducerPath: 'SalesStatsApi',
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_BASE_URL,
@@ -13,7 +13,11 @@ export const salesStatsApi = createApi({
       query: () => 'sales/salesStats',
       providesTags: ['SalesStats'],
     }),
+    getDashboard: builder.query<any, void>({
+      query: () => 'general/dashboard',
+      providesTags: ['Dashboard'],
+    }),
   }),
 });
 
-export const { useGetSalesStatsQuery } = salesStatsApi;
+export const { useGetSalesStatsQuery, useGetDashboardQuery } = salesStatsApi;

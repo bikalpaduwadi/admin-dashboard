@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import { Box, useTheme } from '@mui/material';
 import {
   DataGrid,
@@ -12,9 +12,7 @@ import Transaction from '../models/entity/Transaction';
 import { useGetTransactionsQuery } from '../state/apis/clients';
 import CustomToolbar from '../components/datagrid/CustomToolbar';
 
-interface TransactionsProps {}
-
-const Transactions: FC<TransactionsProps> = ({}) => {
+const Transactions = () => {
   const theme = useTheme();
 
   const [searchInput, setSearchInput] = useState('');

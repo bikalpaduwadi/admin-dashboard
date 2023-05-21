@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { Box, useTheme } from '@mui/material';
 import { ResponsiveChoropleth } from '@nivo/geo';
 
@@ -6,9 +5,7 @@ import { geoData } from '../state/data/geo';
 import PageHeader from '../components/PageHeader';
 import { useGetGeographyQuery } from '../state/apis/clients';
 
-interface GeographyProps {}
-
-const Geography: FC<GeographyProps> = ({}) => {
+const Geography = () => {
   const theme = useTheme();
   const { data } = useGetGeographyQuery();
 

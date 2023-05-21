@@ -27,9 +27,12 @@ import managementRoutes from './routes/managementRoutes';
 // import { dataTransaction } from './data';
 
 // DATA IMPORTS TO SEED OVERALL STAT DATA
-// import Transaction from './models/OverallStat';
 // import { dataOverallStat } from './data';
 // import OverallStat from './models/OverallStat';
+
+// DATA IMPORTS TO SEED AFFILIATE STAT DATA
+// import { dataAffiliateStat } from './data';
+// import AffiliateStat from './models/AffiliateStat';
 
 // CONFIGURATIONS
 dotenv.config();
@@ -87,6 +90,13 @@ mongoose
     // console.log('OverallStat count', overallStatCount);
     // if (!overallStatCount) {
     //   OverallStat.insertMany(dataOverallStat);
+    // }
+
+    /* AFFILIATE STAT DATA */
+    // const affiliateStatCount = await AffiliateStat.find().count();
+    // console.log('AffiliateStat count', affiliateStatCount);
+    // if (!affiliateStatCount) {
+    //   AffiliateStat.insertMany(dataAffiliateStat);
     // }
 
     console.log('Connected to database');

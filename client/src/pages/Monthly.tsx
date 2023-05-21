@@ -1,5 +1,5 @@
+import { useMemo } from 'react';
 import { ResponsiveLine } from '@nivo/line';
-import { FC, useMemo, useState } from 'react';
 import { Box, useTheme } from '@mui/material';
 
 import PageHeader from '../components/PageHeader';
@@ -11,7 +11,7 @@ interface Line {
   data: { x: string; y: number }[];
 }
 
-const Monthly: FC = ({}) => {
+const Monthly = () => {
   const { data } = useGetSalesStatsQuery();
   const theme = useTheme();
 
